@@ -1,0 +1,113 @@
+/* header */
+
+/* header first line */
+.header_firstline {
+    background-color: #4B565E;
+
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+        color: #ffffff;
+        padding: 0px 200px;
+    }
+
+    &__left_box {
+        display: flex;
+        align-items: center;
+
+        &-logo {
+            padding-right: 40px;
+        }
+
+        &-nav {
+            display: flex;
+            gap: 24px;
+
+            a {
+                color: #fff;
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+    }
+
+    &__right_box {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        &-telicon {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+            a {
+                font-weight: 500;
+                font-size: 16px;
+                color: #fff;
+            }
+        }
+
+        &-binicon {
+            border: 1px solid #f0ba4e;
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            color: #ffffff;
+        }
+    }
+}
+
+/* header second line */
+.header_secondline {
+    background-color: #f0ba4e;
+
+    &-content {
+        height: 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 200px;
+    }
+
+    &__left_box,
+    &__right_box {
+        display: flex;
+        align-items: center;
+
+        img {
+            padding-right: 10px;
+        }
+
+        &-nav {
+            display: flex;
+            gap: 24px;
+
+            a {
+                font-size: 14;
+                font-weight: 600;
+                color: #3C3C3B;
+            }
+        }
+
+        &-geoicon {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+
+    &__input {
+        background-color: transparent;
+        color: #4B565E99;
+        border: none;
+        height: 28px;
+        width: 400px;
+        border-bottom: 1px solid #000000;
+        margin-right: 20px;
+    }
+}

@@ -24,6 +24,15 @@ body {
   background-color: #fbfbfb;
 }
 
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
 /**
    * Render the `main` element consistently in IE.
    */
