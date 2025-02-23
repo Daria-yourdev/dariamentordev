@@ -1,0 +1,28 @@
+.todos_description {
+    font-size: 19px;
+    font-weight: 500;
+    padding: 7px 0px;
+    padding-bottom: 25px;
+}
+
+h4 {
+    color: rgba($color: #000000, $alpha: 0.6);
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+}
+
+
+.todos_button {
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    border: 1px solid #F0BA4E;
+    border-radius: 54px;
+    padding: 14px 0px;
+    text-align: center;
+    color: #000000;
+    cursor: pointer;
+    background-color: #ffffff;
+    margin-top: 10px;
+}

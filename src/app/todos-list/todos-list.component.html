@@ -1,0 +1,10 @@
+<div class="users-list container">
+    <h3>Компонент списка задач</h3>
+    <div class="todos_cards">
+        <div class="todos_cards-card" *ngFor="let item of todos">
+
+            <app-todo-card [todo]="item" (deleteTodo)="deleteTodo($event)"></app-todo-card>
+
+        </div>
+    </div>
+</div>

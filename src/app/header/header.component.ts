@@ -34,11 +34,13 @@ export class HeaderComponent {
     }
 
 
-    readonly Main = 'Главная';
+    readonly main = 'Главная';
 
-    readonly AboutCompany = 'О компании';
+    readonly aboutcompany = 'О компании';
 
-    readonly Catalog = 'Каталог';
+    readonly catalog = 'Каталог';
 
-    readonly Users = "Пользователи";
+    readonly users = "Пользователи";
+    
+    readonly todos = 'Задачи'
 }

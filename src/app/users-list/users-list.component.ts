@@ -1,6 +1,8 @@
 import { NgFor } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Component, inject } from "@angular/core";
+import { UsersApiService } from "./users-api.service";
+import { UserCardComponent } from "./user-card/user-card.component";
 
 export interface User {
     id: number;
@@ -25,21 +27,21 @@ export interface User {
 @Component({
     selector: 'app-users-list',
     standalone: true,
-    imports: [NgFor],
-    templateUrl: "./users-list.component.html", // ./ в этой же папке ../ в родительской папке
+    imports: [NgFor, UserCardComponent],
+    templateUrl: "./users-list.component.html",
     styleUrl: "./users-list.component.scss",
 })
 
 export class UsersListComponent {
-    readonly apiService = inject(HttpClient); // поле класса
-    users = [];
+    readonly usersApiService = inject(UsersApiService);
+    readonly apiService = inject(HttpClient); 
 
+    users: User[] = [];
 
     constructor() {
-        this.apiService.get('https://jsonplaceholder.typicode.com/users').subscribe(
+         this.usersApiService.getUsers().subscribe(
             (response: any) => {
                 this.users = response;
-                console.log("USERS: ", this.users);
             }
         )
 
@@ -47,7 +49,6 @@ export class UsersListComponent {
 
     deleteUser(id: number) {
         this.users = this.users.filter(
-            // @ts-ignore
             item => item.id !== id
         )
     }
