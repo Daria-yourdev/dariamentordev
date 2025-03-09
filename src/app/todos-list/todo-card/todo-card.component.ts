@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Todo } from "../todos-list.component";
 
 @Component ({
     selector: 'app-todo-card',
@@ -9,7 +10,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 export class TodoCardComponent {
 
-    @Input() todo: any;
+    @Input() todo!: Todo
 
     @Output()
     deleteTodo = new EventEmitter()
@@ -17,5 +18,4 @@ export class TodoCardComponent {
     onDeleteTodo (todoid: number) {
         this.deleteTodo.emit(todoid)
     }
-
 }
