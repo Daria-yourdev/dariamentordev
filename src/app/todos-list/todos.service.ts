@@ -5,39 +5,32 @@ import { Todo } from "./todos-list.component"
 @Injectable({ providedIn: 'root' })
 export class TodosService {
     
-    todosSubject = new BehaviorSubject<Todo[]>([]);
+    private todoSubject$ = new BehaviorSubject<Todo[]>([]);
+    todos$ = this.todoSubject$.asObservable();
 
     setTodos(todos: Todo[]) {
-        this.todosSubject.next(todos);
+        this.todoSubject$.next(todos);
     }
 
     editTodos(edittodo: Todo) {
-        this.todosSubject.next(
-            this.todosSubject.value.map(
+        this.todoSubject$.next(
+            this.todoSubject$.value.map(
                 todo => {
-                    if (todo.id === edittodo.id) {
-                        return edittodo
-                    } else {
-                        return todo
-                    }
+                    return todo.id === edittodo.id ? edittodo : todo;
                 }
             )
         )
     }
 
     createTodo(todo: Todo) {
-        this.todosSubject.next([...this.todosSubject.value, todo])
+        this.todoSubject$.next([...this.todoSubject$.value, todo])
     }
 
     deleteTodo(id: number) {
-        this.todosSubject.next(
-            this.todosSubject.value.filter(
+        this.todoSubject$.next(
+            this.todoSubject$.value.filter(
                 item => {
-                    if (id === item.id) {
-                        return false
-                    } else {
-                        return true
-                    }
+                    return id !== item.id;
                 }
             )
         )
