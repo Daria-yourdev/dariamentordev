@@ -1,0 +1,18 @@
+<h3 class="title_3">Добавить юзера</h3>
+
+<form action="" class="create_user" [formGroup]="form" (ngSubmit)="submitForm()">
+    <p class="create_user-label">Имя</p>
+    <input type="text" class="create_user-input" placeholder="Введите имя" formControlName="name">
+
+    <p class="create_user-label">Email</p>
+    <input type="text" class="create_user-input" placeholder="Введите почту" formControlName="email">
+
+    <p class="create_user-label">Website</p>
+    <input type="text" class="create_user-input" placeholder="Введите веб-сайт" formControlName="website">
+
+    <p class="create_user-label">Company</p>
+    <input type="text" class="create_user-input" placeholder="Введите компанию" formControlName="company">
+
+    <button class="create_user-button">Добавить юзера</button>
+
+</form>

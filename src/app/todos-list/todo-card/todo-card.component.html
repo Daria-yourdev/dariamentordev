@@ -1,0 +1,16 @@
+<h4>Текст задачи</h4>
+<div class="todos_description">
+    {{todo.title}}
+</div>
+
+<h4>Автор задачи</h4>
+<div class="todos_description">
+    {{todo.id}}
+</div>
+
+<h4>Задача завершена:</h4>
+<div class="todos_description">
+    {{todo.completed ? 'ДА' : 'НЕТ'}}
+</div>
+
+<button (click)="onDeleteTodo(todo.id)" class="todos_button">Удалить задачу</button>

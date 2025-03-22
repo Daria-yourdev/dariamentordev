@@ -1,0 +1,52 @@
+<!-- header -->
+<header>
+
+    <!-- header first line -->
+    <div class="header_firstline">
+        <div class="header_firstline-content container">
+            <div class="header_firstline__left_box">
+                <img class="header_firstline__left_box-logo" src="/assets/header/logo.svg" alt="logo">
+
+                <nav class="header_firstline__left_box-nav">
+                    <a href="#" routerLink="">{{main}}</a>
+                    <a href="#" *ngIf="isShowCatalog">{{catalog}}</a>
+                    <a href="#" routerLink="users">{{users}}</a>
+                    <a href="#" routerLink="todos">{{todos}}</a>
+                </nav>
+            </div>
+
+            <button (click)="isShowCatalog = !isShowCatalog">Скрыть\Показать каталог</button>
+
+            <button (click)="changeMenuText()">Изменить текст</button>
+
+            <div class="header_firstline__right_box">
+                <div class="header_firstline__right_box-telicon">
+                    <img src="/assets/header/phone.svg" alt="">
+                    <a href="tel:+79650842929">+7 (965) 084-29-29</a>
+                </div>
+                <img src="/assets/header/heart.svg" alt="">
+                <a href="#" class="header_firstline__right_box-binicon"><img src="/assets/header/bin.svg"
+                        alt="">Пусто</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- header second line -->
+    <div class="header_secondline">
+        <div class="header_secondline-content container">
+            <div class="header_secondline__left_box">
+                <img src="/assets/header/list.svg" alt="list">
+
+                <nav class="header_secondline__left_box-nav">
+                    <a href="#" *ngFor="let item of menuItems">{{item}}</a>
+                </nav>
+            </div>
+
+            <div class="header_secondline__right_box">
+                <input class="header_secondline__input" type="text" placeholder="Поиск, например Круг зачистной">
+                <div class="header_secondline__right_box-geoicon"><img src="/assets/header/geo.svg" alt="geo">Москва
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
