@@ -1,0 +1,18 @@
+<h3 class="title_3">Добавить задачу</h3>
+
+<form action="" class="create_todo" [formGroup]="form" (ngSubmit)="submitForm()">
+
+    <p class="create_todo-label">Text</p>
+    <input type="text" class="create_todo-input" placeholder="Введите текст для задачи" formControlName="title">
+
+    <p class="create_todo-label">Avtor</p>
+    <input type="text" class="create_todo-input" placeholder="Введите автора задачи" formControlName="userId">
+
+    <p class="create_todo-label">Completed</p>
+    <div class="checkbox-group">
+        <input type="radio" formControlName="completed" [value]="true"> Да
+        <input type="radio" formControlName="completed" [value]="false"> Нет
+    </div>
+
+    <button class="create_todo-button" [disabled]="form.invalid">Добавить туду</button>
+</form>

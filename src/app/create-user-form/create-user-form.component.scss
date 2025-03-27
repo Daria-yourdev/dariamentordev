@@ -1,0 +1,48 @@
+.create_user {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+
+    &-label {
+        font-size: 16px;
+        opacity: 0.7;
+    }
+
+    &-button {
+        font-size: 20px;
+        font-weight: 500;
+        width: 110%;
+        border: 1px solid #F0BA4E;
+        border-radius: 54px;
+        padding: 20px;
+        text-align: center;
+        color: #000000;
+        background-color: #F0BA4E;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    &-button:disabled {
+        opacity: 0.5;
+    }
+
+    &-input {
+        font-size: 20px;
+        font-weight: 500;
+        width: 100%;
+        border: 1px solid #6f6f6f;
+        border-radius: 54px;
+        padding: 20px;
+        color: #000000;
+        background-color: #ffffff;
+        margin-bottom: 15px;
+    }
+}
+
+.title_3 {
+    font-size: 28px;
+    font-weight: 600;
+    padding: 28px 0px;
+    margin: 0;
+    margin-top: 20px;
+}

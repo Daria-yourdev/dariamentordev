@@ -1,4 +1,4 @@
-.create_user {
+.create_todo {
     display: flex;
     flex-direction: column;
     width: 400px;
@@ -22,6 +22,10 @@
         margin-top: 20px;
     }
 
+    &-button:disabled {
+        opacity: 0.5;
+    }
+
     &-input {
         font-size: 20px;
         font-weight: 500;
@@ -41,4 +45,14 @@
     padding: 28px 0px;
     margin: 0;
     margin-top: 20px;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    input[type="radio"] {
+        cursor: pointer;
+    }
 }

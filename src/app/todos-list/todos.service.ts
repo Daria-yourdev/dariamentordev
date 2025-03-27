@@ -23,7 +23,7 @@ export class TodosService {
     }
 
     createTodo(todo: Todo) {
-        this.todoSubject$.next([...this.todoSubject$.value, todo])
+        this.todoSubject$.next([todo, ...this.todoSubject$.value])
     }
 
     deleteTodo(id: number) {

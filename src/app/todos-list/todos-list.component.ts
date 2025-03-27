@@ -4,6 +4,7 @@ import { TodoCardComponent } from "./todo-card/todo-card.component";
 import { TodosApiService } from "./todos-api.service";
 import { HttpClient } from "@angular/common/http";
 import { TodosService } from "./todos.service";
+import { CreateTodoFormComponent } from "../create-todo-form/create-todo-form.component";
 
 export interface Todo {
     userId: number,
@@ -15,7 +16,7 @@ export interface Todo {
 @Component({
     selector: 'app-users-list',
     standalone: true,
-    imports: [NgFor, TodoCardComponent, AsyncPipe],
+    imports: [NgFor, TodoCardComponent, AsyncPipe, CreateTodoFormComponent],
     templateUrl: "./todos-list.component.html",
     styleUrl: "./todos-list.component.scss",
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -34,8 +35,17 @@ export class TodosListComponent {
         )
     }
 
-    deleteTodo (id: number) {
+    deleteTodo(id: number) {
         this.todosService.deleteTodo(id);
+    }
+
+    createTodo(todoData: Todo) {
+        this.todosService.createTodo({
+            id: new Date().getTime(),
+            userId: todoData.userId,
+            title: todoData.title,
+            completed: todoData.completed
+        })
     }
 
 }

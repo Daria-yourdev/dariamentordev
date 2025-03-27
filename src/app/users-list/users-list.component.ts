@@ -3,7 +3,8 @@ import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { UsersApiService } from "./users-api.service";
 import { UserCardComponent } from "./user-card/user-card.component";
 import { UsersService } from "./users.service";
-import { CreateUserFormComponent } from "../create-user-fom/create-user-form.component";
+import { CreateUserFormComponent } from "../create-user-form/create-user-form.component";
+import { HttpClient } from "@angular/common/http";
 
 export interface User {
     id: number;
@@ -36,6 +37,7 @@ export interface User {
 
 export class UsersListComponent {
     readonly usersApiService = inject(UsersApiService);
+    readonly apiService = inject(HttpClient);
     readonly usersService = inject(UsersService);
 
     constructor() {
@@ -56,7 +58,7 @@ export class UsersListComponent {
             email: formData.email,
             website: formData.website,
             company: {
-                name: formData.name,
+                name: formData.company.name
             },
         })
     }

@@ -11,8 +11,10 @@
     <input type="text" class="create_user-input" placeholder="Введите веб-сайт" formControlName="website">
 
     <p class="create_user-label">Company</p>
-    <input type="text" class="create_user-input" placeholder="Введите компанию" formControlName="company">
+    <div formGroupName="company">
+        <input type="text" class="create_user-input" placeholder="Введите компанию" formControlName="name">
+    </div>
 
-    <button class="create_user-button">Добавить юзера</button>
+    <button class="create_user-button" [disabled]="form.invalid">Добавить юзера</button>
 
 </form>
