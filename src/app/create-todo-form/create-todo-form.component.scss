@@ -1,58 +1,44 @@
-.create_todo {
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-
-    &-label {
-        font-size: 16px;
-        opacity: 0.7;
-    }
-
-    &-button {
-        font-size: 20px;
-        font-weight: 500;
-        width: 110%;
-        border: 1px solid #F0BA4E;
-        border-radius: 54px;
-        padding: 20px;
-        text-align: center;
-        color: #000000;
-        background-color: #F0BA4E;
-        cursor: pointer;
-        margin-top: 20px;
-    }
-
-    &-button:disabled {
-        opacity: 0.5;
-    }
-
-    &-input {
-        font-size: 20px;
-        font-weight: 500;
-        width: 100%;
-        border: 1px solid #6f6f6f;
-        border-radius: 54px;
-        padding: 20px;
-        color: #000000;
-        background-color: #ffffff;
-        margin-bottom: 15px;
-    }
-}
-
-.title_3 {
+.form-title {
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 500;
     padding: 28px 0px;
     margin: 0;
     margin-top: 20px;
 }
 
-.checkbox-group {
+.todo-form {
     display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
+    flex-direction: column;
+    max-width: 500px;
+}
 
-    input[type="radio"] {
-        cursor: pointer;
-    }
+.form-field {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.todo-form button {
+    background-color: #F0BA4E;
+    font-size: 18px;
+    border-radius: 15px;
+    padding: 15px;
+    height: 100%;
+    color: #000000;
+    cursor: pointer;
+    width: 50%;
+}
+
+.todo-form button:disabled {
+    opacity: 0.5;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    padding: 8px 0;
+}
+
+.mat-label_radio {
+    padding-bottom: 24px;
 }

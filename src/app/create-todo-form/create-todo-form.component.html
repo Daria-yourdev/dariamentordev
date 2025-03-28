@@ -1,18 +1,30 @@
-<h3 class="title_3">Добавить задачу</h3>
+<h3 class="form-title">Добавить задачу</h3>
 
-<form action="" class="create_todo" [formGroup]="form" (ngSubmit)="submitForm()">
+<form action="" class="todo-form" [formGroup]="form" (ngSubmit)="submitForm()">
 
-    <p class="create_todo-label">Text</p>
-    <input type="text" class="create_todo-input" placeholder="Введите текст для задачи" formControlName="title">
+    <mat-form-field class="form-field">
+        <mat-label>Заголовок</mat-label>
+        <input matInput formControlName="userId" placeholder="Введите заголовок задачи">
+        <mat-error *ngIf="form.controls.userId.errors?.['required']">
+            Заголовок <strong>обязателен</strong></mat-error>
+        <mat-error *ngIf="form.controls.userId.errors?.['minlength']">
+            Минимум 2 символа</mat-error>
+    </mat-form-field>
 
-    <p class="create_todo-label">Avtor</p>
-    <input type="text" class="create_todo-input" placeholder="Введите автора задачи" formControlName="userId">
+    <mat-form-field class="form-field">
+        <mat-label>Описание</mat-label>
+        <input matInput formControlName="title" placeholder="Введите описание задачи">
+        <mat-error *ngIf="form.controls.title.errors?.['required']">
+            Описание <strong>обязателено</strong></mat-error>
+        <mat-error *ngIf="form.controls.title.errors?.['minlength']">
+            Минимум 5 символов</mat-error>
+    </mat-form-field>
 
-    <p class="create_todo-label">Completed</p>
-    <div class="checkbox-group">
-        <input type="radio" formControlName="completed" [value]="true"> Да
-        <input type="radio" formControlName="completed" [value]="false"> Нет
-    </div>
+    <mat-radio-group formControlName="completed" class="radio-group">
+        <mat-label class="mat-label_radio">Задача завершена?</mat-label>
+        <mat-radio-button class="mat-radio-button" [value]="true">Да</mat-radio-button>
+        <mat-radio-button [value]="false">Нет</mat-radio-button>
+    </mat-radio-group>
 
-    <button class="create_todo-button" [disabled]="form.invalid">Добавить туду</button>
+    <button mat-raised-button class="create_todo-button" [disabled]="form.invalid" type="submit"><mat-icon>add</mat-icon>Добавить туду</button>
 </form>
