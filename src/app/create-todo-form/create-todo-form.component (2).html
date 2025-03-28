@@ -1,0 +1,30 @@
+<h3 class="form-title">Добавить туду</h3>
+
+<form action="" class="todo-form" [formGroup]="form" (ngSubmit)="submitForm()">
+
+    <mat-form-field class="form-field">
+        <mat-label>Заголовок</mat-label>
+        <input matInput formControlName="userId" placeholder="Введите заголовок задачи">
+        <mat-error *ngIf="form.controls.userId.errors?.['required']">
+            Заголовок <strong>обязателен</strong></mat-error>
+        <mat-error *ngIf="form.controls.userId.errors?.['minlength']">
+            Минимум 2 символа</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+        <mat-label>Описание</mat-label>
+        <input matInput formControlName="title" placeholder="Введите описание задачи">
+        <mat-error *ngIf="form.controls.title.errors?.['required']">
+            Описание <strong>обязателено</strong></mat-error>
+        <mat-error *ngIf="form.controls.title.errors?.['minlength']">
+            Минимум 5 символов</mat-error>
+    </mat-form-field>
+
+    <mat-radio-group formControlName="completed" class="radio-group">
+        <mat-label class="mat-label_radio">Задача завершена?</mat-label>
+        <mat-radio-button class="mat-radio-button" [value]="true">Да</mat-radio-button>
+        <mat-radio-button [value]="false">Нет</mat-radio-button>
+    </mat-radio-group>
+
+    <button mat-raised-button class="create_todo-button" [disabled]="form.invalid" type="submit"><mat-icon>add</mat-icon>Добавить туду</button>
+</form>
