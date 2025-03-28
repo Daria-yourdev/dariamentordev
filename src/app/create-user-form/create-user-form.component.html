@@ -1,0 +1,45 @@
+<h3 class="form-title">Добавить юзера</h3>
+
+<form action="" class="user-form" [formGroup]="form" (ngSubmit)="submitForm()">
+
+    <mat-form-field class="form-field">
+        <mat-label>Имя</mat-label>
+        <input matInput formControlName="name" placeholder="Введите ваше имя">
+        <mat-error *ngIf="form.controls.name.errors?.['required']">
+            Имя <strong>обязательно</strong></mat-error>
+        <mat-error *ngIf="form.controls.name.errors?.['minlength']">
+            Минимум 2 символа</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+        <mat-label>Почта</mat-label>
+        <input matInput formControlName="email" placeholder="example@mail.com">
+        <mat-error *ngIf="form.controls.email.errors?.['required']">
+            Почта <strong>обязательна</strong></mat-error>
+        <mat-error *ngIf="form.controls.email.errors?.['email']">
+            Введите корректный email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+        <mat-label>Сайт</mat-label>
+        <input matInput formControlName="website" placeholder="https://example.com">
+        <mat-error *ngIf="form.controls.website.errors?.['required']">
+            Сайт <strong>обязателен</strong></mat-error>
+        <mat-error *ngIf="form.controls.website.errors?.['minlength']">
+            Минимум 2 символа</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+        <mat-label>Компания</mat-label>
+        <div formGroupName="company">
+            <input matInput formControlName="name" placeholder="Название компании">
+        </div>
+        <mat-error *ngIf="form.controls.company.controls.name.errors?.['required']" &&
+            (form.controls.company.controls.name.touched || form.controls.company.controls.name.dirty)>
+            Название компании <strong>обязательно</strong></mat-error>
+        <mat-error *ngIf="form.controls.company.controls.name.errors?.['minlength']">
+            Минимум 2 символа</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button class="create_user-button" [disabled]="form.invalid" type="submit"><mat-icon>add</mat-icon>Добавить юзера</button>
+</form>
