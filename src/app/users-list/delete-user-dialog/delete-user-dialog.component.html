@@ -1,0 +1,12 @@
+<div class="deleteDialog">
+    <h3 mat-dialog-title class="deleteDialog-title">Удалить пользователя</h3>
+
+    <mat-dialog-content>
+        Вы действительно хотите удалить пользователя: {{ this.data.user.name }}?
+    </mat-dialog-content>
+
+    <mat-dialog-actions class="deleteDialog-btns">
+        <button mat-button mat-dialog-close class="deleteDialog-button_cancel">ОТМЕНА</button>
+        <button mat-button cdkFocusInitial [mat-dialog-close]="true" class="deleteDialog-button_submit">УДАЛИТЬ!</button>
+    </mat-dialog-actions>
+</div>

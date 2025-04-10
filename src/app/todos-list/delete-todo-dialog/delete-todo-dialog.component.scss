@@ -1,0 +1,39 @@
+.deleteDialog {
+    margin: 30px;
+
+    &-title {
+        font-size: 28px;
+        font-weight: 500;
+    }
+
+    &-button_cancel {
+        font-size: 16px;
+        font-weight: 500;
+        width: 25%;
+        border: 1px solid #F0BA4E;
+        border-radius: 54px;
+        padding: 10px 0px;
+        text-align: center;
+        color: #000000;
+        cursor: pointer;
+        background-color: #ffffff;
+    }
+
+    &-button_submit {
+        font-size: 16px;
+        font-weight: 500;
+        width: 25%;
+        border: 1px solid #F0BA4E;
+        border-radius: 54px;
+        padding: 10px 0px;
+        text-align: center;
+        color: #000000;
+        cursor: pointer;
+        background-color: #F0BA4E;
+    }
+
+    &-btns {
+        display: flex;
+        gap: 10px;
+    }
+}
