@@ -1,6 +1,5 @@
-<div class="form-content">
-    
-    <h3 class="form-title">Редактировать туду</h3>
+<div class="create_todo-formContent">
+    <h3 class="form-title">Добавить туду</h3>
 
     <form action="" class="todo-form" [formGroup]="form">
 
@@ -28,8 +27,7 @@
             <mat-radio-button [value]="false">Нет</mat-radio-button>
         </mat-radio-group>
 
-        <button mat-raised-button class="create_todo-button" [disabled]="form.invalid" 
-        type="submit" [mat-dialog-close]="todoWithUpdatedFields"><mat-icon>check_circle</mat-icon>Сохранить изменения</button>
+        <button mat-raised-button class="create_todo-button" [disabled]="form.invalid" type="submit"
+            (click)="submitForm()"><mat-icon>add</mat-icon>Добавить туду</button>
     </form>
-
 </div>

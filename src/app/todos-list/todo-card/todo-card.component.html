@@ -1,16 +1,42 @@
-<h4>Заголовок</h4>
-<div class="todos_description">
-    {{todo.userId}}
-</div>
+<mat-card class="todo-card">
+    <mat-card-title>Детали задачи</mat-card-title>
 
-<h4>Описание задачи</h4>
-<div class="todos_description">
-    {{todo.title}}
-</div>
+    <mat-divider></mat-divider>
 
-<h4>Задача завершена:</h4>
-<div class="todos_description">
-    {{todo.completed ? 'ДА' : 'НЕТ'}}
-</div>
+    <mat-card-content>
+        <div class="todo-field">
+            <h4 class="todo-label">Заголовок</h4>
+            <div class="todo-value">{{todo.userId}}</div>
+        </div>
 
-<button (click)="onDeleteTodo(todo.id)" class="todos_button">Удалить задачу</button>
+        <div class="todo-field">
+            <h4 class="todo-label">Описание задачи</h4>
+            <div class="todo-value">{{todo.title}}</div>
+        </div>
+
+        <div class="todo-field">
+            <h4 class="todo-label">Задача завершена?</h4>
+
+            <div class="todo-value_checkbox">
+                <mat-icon class="status-icon" [class.completed]="todo.completed">
+                    {{todo.completed ? 'check_circle' : 'cancel'}}
+                </mat-icon>
+
+                <div class="todos_description">
+                    {{todo.completed ? 'ДА' : 'НЕТ'}}
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-actions class="todo-actions">
+        <button mat-button (click)="openDialogEdit()" class="edit-btn">
+            <mat-icon>edit</mat-icon> Редактировать
+        </button>
+        <button mat-button (click)="openDialogDelete()" class="delete-btn">
+            <mat-icon>delete</mat-icon> Удалить
+        </button>
+    </mat-card-actions>
+</mat-card>

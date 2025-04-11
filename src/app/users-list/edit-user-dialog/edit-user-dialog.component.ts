@@ -15,38 +15,23 @@ import { MatIconModule } from "@angular/material/icon";
     imports: [ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, NgIf, MatIconModule, MatDialogClose]
 })
 export class EditUserDialogComponent {
+
     readonly data = inject(MAT_DIALOG_DATA);
     readonly dialogRef = inject(MatDialogRef<EditUserDialogComponent>)
 
     public form = new FormGroup({
         name: new FormControl(
-            this.data.user.name,
-            {
-                validators:
-                    [Validators.required, Validators.minLength(2)]
-            }
+            this.data.user.name, { validators: [Validators.required, Validators.minLength(2)] }
         ),
         email: new FormControl(
-            this.data.user.email,
-            {
-                validators:
-                    [Validators.required, Validators.email]
-            }
+            this.data.user.email, { validators: [Validators.required, Validators.email] }
         ),
         website: new FormControl(
-            this.data.user.website,
-            {
-                validators:
-                    [Validators.required, Validators.minLength(2)]
-            }
+            this.data.user.website, { validators: [Validators.required, Validators.minLength(2)] }
         ),
         company: new FormGroup({
             name: new FormControl(
-                this.data.user.company.name,
-                {
-                    validators:
-                        [Validators.required, Validators.minLength(2)]
-                })
+                this.data.user.company.name, { validators: [Validators.required, Validators.minLength(2)] })
         })
     });
 

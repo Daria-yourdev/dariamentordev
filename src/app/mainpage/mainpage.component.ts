@@ -1,4 +1,4 @@
-import { NgIf } from "@angular/common";
+import { NgFor, NgIf } from "@angular/common";
 import { Component } from "@angular/core";
 
 const newPages = [5, 4, 3, 2, 1];
@@ -6,7 +6,7 @@ const newPages = [5, 4, 3, 2, 1];
 @Component({
     selector: 'app-mainpage',
     standalone: true,
-    imports: [NgIf],
+    imports: [NgIf, NgFor],
     templateUrl: './mainpage.component.html',
     styleUrl: './mainpage.component.scss'
 })

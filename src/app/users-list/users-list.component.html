@@ -1,6 +1,6 @@
 <div class="users-list container">
 
-    <app-create-user-form (createUser)="createUser($event)"></app-create-user-form>
+    <button mat-raised-button (click)="openDialogCreate()" class="create_user-btn"><mat-icon>add</mat-icon>Создать юзера</button>
 
     <h3 class="title_3">Список юзеров</h3>
 
@@ -8,7 +8,7 @@
         <div class="users_cards-card" *ngFor="let user of usersService.users$ | async">
             <app-user-card 
             [user]="user" 
-            (deleteUser)="deleteUser($event)"
+            (deleteUser)="deleteUser(user.id)"
             (editUser)="editUser($event)"></app-user-card>
         </div>
     </div>

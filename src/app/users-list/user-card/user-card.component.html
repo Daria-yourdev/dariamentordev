@@ -1,6 +1,28 @@
-<p class="users_cards-name">{{user.name}}</p>
-<p class="users_cards-email">{{user.email}}</p>
-<p class="users_cards-website">{{user.website}}</p>
-<p class="users_cards-website">{{user.company.name}}</p>
-<button (click)=onDeleteUser(user.id) class="users_cards-button">Удалить юзера</button>
-<button (click)=openDialog() class="users_cards-button">Редактировать юзера</button>
+<mat-card class="user-card">
+    <mat-card-title>{{user.name}}</mat-card-title>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+        <mat-card-subtitle>
+            <mat-icon>email</mat-icon> {{user.email}}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            <mat-icon>public</mat-icon> {{user.website}}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            <mat-icon>business</mat-icon> {{user.company.name}}
+        </mat-card-subtitle>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-actions class="todo-actions">
+        <button mat-button (click)="openDialogEdit()" class="edit-btn">
+            <mat-icon>edit</mat-icon> Редактировать
+        </button>
+        <button mat-button (click)="openDialogDelete()" class="delete-btn">
+            <mat-icon>delete</mat-icon> Удалить
+        </button>
+    </mat-card-actions>
+</mat-card>

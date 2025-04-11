@@ -8,10 +8,10 @@
                 <img class="header_firstline__left_box-logo" src="/assets/header/logo.svg" alt="logo">
 
                 <nav class="header_firstline__left_box-nav">
-                    <a href="#" routerLink="">{{main}}</a>
-                    <a href="#" *ngIf="isShowCatalog">{{catalog}}</a>
-                    <a href="#" routerLink="users">{{users}}</a>
-                    <a href="#" routerLink="todos">{{todos}}</a>
+                    <a href="#" routerLink="" class="header-menu_item">{{main}}</a>
+                    <a href="#" *ngIf="isShowCatalog" class="header-menu_item">{{catalog}}</a>
+                    <a href="#" routerLink="users" class="header-menu_item">{{users}}</a>
+                    <a href="#" routerLink="todos" class="header-menu_item">{{todos}}</a>
                 </nav>
             </div>
 
@@ -22,7 +22,7 @@
             <div class="header_firstline__right_box">
                 <div class="header_firstline__right_box-telicon">
                     <img src="/assets/header/phone.svg" alt="">
-                    <a href="tel:+79650842929">+7 (965) 084-29-29</a>
+                    <a href="tel:+79650842929" class="tel_link">+7 (965) 084-29-29</a>
                 </div>
                 <img src="/assets/header/heart.svg" alt="">
                 <a href="#" class="header_firstline__right_box-binicon"><img src="/assets/header/bin.svg"
@@ -35,10 +35,10 @@
     <div class="header_secondline">
         <div class="header_secondline-content container">
             <div class="header_secondline__left_box">
-                <img src="/assets/header/list.svg" alt="list">
+                <img src="/assets/header/list.svg" alt="list" class="header_secondline-img">
 
                 <nav class="header_secondline__left_box-nav">
-                    <a href="#" *ngFor="let item of menuItems">{{item}}</a>
+                    <a href="#" *ngFor="let item of menuItems" class="menu_item_secondline">{{item}}</a>
                 </nav>
             </div>
 

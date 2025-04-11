@@ -25,7 +25,7 @@
             display: flex;
             gap: 24px;
 
-            a {
+            .header-menu_item {
                 color: #fff;
                 font-size: 16px;
                 font-weight: 500;
@@ -43,7 +43,7 @@
             gap: 10px;
             align-items: center;
 
-            a {
+            .tel_link {
                 font-weight: 500;
                 font-size: 16px;
                 color: #fff;
@@ -79,7 +79,7 @@
         display: flex;
         align-items: center;
 
-        img {
+        .header_secondline-img {
             padding-right: 10px;
         }
 
@@ -87,7 +87,7 @@
             display: flex;
             gap: 24px;
 
-            a {
+            .menu_item_secondline {
                 font-size: 14;
                 font-weight: 600;
                 color: #3C3C3B;

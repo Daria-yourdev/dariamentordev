@@ -12,6 +12,6 @@ import { Todo } from "../todos-list.component";
 export class DeleteTodoDialogComponent{
 
     public readonly data = inject<{todo: Todo}>(MAT_DIALOG_DATA);
-
     readonly dialog = inject(MatDialog);
+    
 }

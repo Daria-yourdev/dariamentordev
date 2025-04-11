@@ -1,11 +1,12 @@
 import { NgIf } from "@angular/common";
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, inject, Output } from "@angular/core";
 import { FormControl, ReactiveFormsModule, FormGroup, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatIconModule } from "@angular/material/icon";
+import { MatDialogRef } from "@angular/material/dialog";
 
 @Component({
     selector: 'app-create-todo-form',
@@ -16,26 +17,22 @@ import { MatIconModule } from "@angular/material/icon";
 })
 export class CreateTodoFormComponent {
 
+    readonly dialogRef = inject(MatDialogRef<CreateTodoFormComponent>);
+
     @Output()
     createTodo = new EventEmitter();
 
     public form = new FormGroup({
         userId: new FormControl(
-            '',
-            {
-                validators: [Validators.required, Validators.minLength(2)]
-            }
+            '', { validators: [Validators.required, Validators.minLength(2)] }
         ),
         title: new FormControl(
-            '',
-            {
-                validators: [Validators.required, Validators.minLength(5)]
-            }
+            '', { validators: [Validators.required, Validators.minLength(5)] }
         ),
         completed: new FormControl(false)
     })
 
     public submitForm(): void {
-        this.createTodo.emit(this.form.value)
+        this.dialogRef.close(this.form.value)
     }
 }

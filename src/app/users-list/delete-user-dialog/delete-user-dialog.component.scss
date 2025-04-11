@@ -9,27 +9,35 @@
     &-button_cancel {
         font-size: 16px;
         font-weight: 500;
-        width: 25%;
         border: 1px solid #F0BA4E;
         border-radius: 54px;
-        padding: 10px 0px;
+        padding: 14px 28px;
         text-align: center;
         color: #000000;
         cursor: pointer;
         background-color: #ffffff;
+
+        &:hover {
+            background-color: #f0ba4e4a;
+            transition: 0.3s;
+        }
     }
 
     &-button_submit {
         font-size: 16px;
         font-weight: 500;
-        width: 25%;
         border: 1px solid #F0BA4E;
         border-radius: 54px;
-        padding: 10px 0px;
+        padding: 14px 28px;
         text-align: center;
         color: #000000;
         cursor: pointer;
         background-color: #F0BA4E;
+
+        &:hover {
+            background-color: #f0ba4e4a;
+            transition: 0.3s;
+        }
     }
 
     &-btns {

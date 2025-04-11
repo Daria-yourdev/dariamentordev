@@ -1,5 +1,5 @@
 import { NgIf } from "@angular/common";
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, inject, Output } from "@angular/core";
 import {
     FormControl,
     ReactiveFormsModule,
@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from "@angular/material/icon";
+import { MatDialogRef } from "@angular/material/dialog";
 
 @Component({
     selector: 'app-create-user-form',
@@ -20,42 +21,28 @@ import { MatIconModule } from "@angular/material/icon";
 })
 export class CreateUserFormComponent {
 
+    readonly dialogref = inject(MatDialogRef<CreateUserFormComponent>);
+
     @Output()
     createUser = new EventEmitter();
 
     public form = new FormGroup({
         name: new FormControl(
-            '',
-            {
-                validators:
-                    [Validators.required, Validators.minLength(2)]
-            }
+            '', { validators: [Validators.required, Validators.minLength(2)] }
         ),
         email: new FormControl(
-            '',
-            {
-                validators:
-                    [Validators.required, Validators.email]
-            }
+            '', { validators: [Validators.required, Validators.email] }
         ),
         website: new FormControl(
-            '',
-            {
-                validators:
-                    [Validators.required, Validators.minLength(2)]
-            }
+            '', { validators: [Validators.required, Validators.minLength(2)] }
         ),
         company: new FormGroup({
             name: new FormControl(
-                '',
-                {
-                    validators:
-                        [Validators.required, Validators.minLength(2)]
-                })
+                '', { validators: [Validators.required, Validators.minLength(2)] })
         })
     });
 
     public submitForm(): void {
-        this.createUser.emit(this.form.value);
+        this.dialogref.close(this.form.value);
     }
 }

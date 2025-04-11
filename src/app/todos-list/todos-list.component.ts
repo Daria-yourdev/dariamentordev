@@ -4,7 +4,9 @@ import { TodoCardComponent } from "./todo-card/todo-card.component";
 import { TodosApiService } from "./todos-api.service";
 import { HttpClient } from "@angular/common/http";
 import { TodosService } from "./todos.service";
-import { CreateTodoFormComponent } from "../create-todo-form/create-todo-form.component";
+import { CreateTodoFormComponent } from "./create-todo-form/create-todo-form.component";
+import { MatIconModule } from "@angular/material/icon";
+import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 
 export interface Todo {
     userId: number,
@@ -16,7 +18,7 @@ export interface Todo {
 @Component({
     selector: 'app-users-list',
     standalone: true,
-    imports: [NgFor, TodoCardComponent, AsyncPipe, CreateTodoFormComponent],
+    imports: [NgFor, TodoCardComponent, AsyncPipe, MatIconModule, MatDialogModule],
     templateUrl: "./todos-list.component.html",
     styleUrl: "./todos-list.component.scss",
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -26,6 +28,8 @@ export class TodosListComponent {
     readonly todosApiService = inject(TodosApiService);
     readonly apiService = inject(HttpClient);
     readonly todosService = inject(TodosService);
+
+    readonly dialog = inject(MatDialog);
 
     constructor() {
         this.todosApiService.getTodos().subscribe(
@@ -39,6 +43,10 @@ export class TodosListComponent {
         this.todosService.deleteTodo(id);
     }
 
+    editTodo(todo: Todo) {
+        this.todosService.editTodos(todo);
+    }
+
     createTodo(todoData: Todo) {
         this.todosService.createTodo({
             id: new Date().getTime(),
@@ -48,4 +56,11 @@ export class TodosListComponent {
         })
     }
 
+    openDialogCreate(): void {
+        const dialogRef = this.dialog.open(CreateTodoFormComponent);
+
+        dialogRef.afterClosed().subscribe((result: Todo) => {
+            this.createTodo(result)
+        });
+    }
 }

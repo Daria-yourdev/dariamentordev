@@ -18,7 +18,7 @@
                     display: flex;
                     gap: 12px;
 
-                    img {
+                    &-img {
                         width: 24px;
                         height: 24px;
                     }
@@ -98,12 +98,12 @@
     }
 
     &_content-botton {
-        nav {
+        &_menu {
             display: flex;
             gap: 28px;
             padding: 35px 0px;
 
-            a {
+            .menu_item {
                 font-size: 14px;
                 font-weight: 400;
                 color: #ffffff;
@@ -128,9 +128,9 @@
             }
         }
     }
-}
 
-footer hr {
-    border: 1px solid #566169;
-    margin-top: 52px;
+    &_hr {
+        border: 1px solid #566169;
+        margin-top: 52px;
+    }
 }

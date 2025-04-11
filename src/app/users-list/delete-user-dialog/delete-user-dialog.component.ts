@@ -1,5 +1,5 @@
 import { Component, inject } from "@angular/core";
-import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialogContent } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialogModule } from "@angular/material/dialog";
 import { User } from "../users-list.component";
 
 @Component({
@@ -7,11 +7,11 @@ import { User } from "../users-list.component";
     templateUrl: './delete-user-dialog.component.html',
     styleUrl: './delete-user-dialog.component.scss',
     standalone: true,
-    imports: [MatDialogContent, MatDialogActions, MatDialogClose]
+    imports: [MatDialogActions, MatDialogClose, MatDialogModule]
 })
 export class DeleteUserDialogComponent {
 
     public readonly data = inject<{ user: User }>(MAT_DIALOG_DATA);
-
     readonly dialog = inject(MatDialog);
+    
 }

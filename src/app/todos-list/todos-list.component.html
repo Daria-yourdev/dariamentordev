@@ -1,13 +1,17 @@
 <div class="users-list container">
 
-    <app-create-todo-form (createTodo)="createTodo($event)"></app-create-todo-form>
+    <button mat-raised-buttom (click)="openDialogCreate()" class="create_todo-btn"><mat-icon>add</mat-icon>Создать
+        задачу</button>
 
     <h3 class="title_3">Компонент списка задач</h3>
 
     <div class="todos_cards">
         <div class="todos_cards-card" *ngFor="let todo of todosService.todos$ | async">
 
-            <app-todo-card [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todo-card>
+            <app-todo-card 
+            [todo]="todo" 
+            (deleteTodo)="deleteTodo(todo.id)"
+            (editTodo)="editTodo($event)"></app-todo-card>
 
         </div>
     </div>
