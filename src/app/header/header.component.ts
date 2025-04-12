@@ -1,6 +1,7 @@
 import { DatePipe, NgFor, NgIf } from "@angular/common";
 import { Component } from "@angular/core";
 import { RouterLink } from "@angular/router";
+import { YellowDirective } from "../directives/yellow.directive";
 
 const menuItems = ['Каталог', 'стройматериалы', 'Инструменты', 'Электрика'];
 
@@ -13,7 +14,7 @@ const upperCaseMenuItems = menuItems.map(
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [NgIf, NgFor, RouterLink, DatePipe],
+    imports: [NgIf, NgFor, RouterLink, DatePipe, YellowDirective],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })
