@@ -8,13 +8,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from "@angular/material/icon";
+import { RemoveSlashesPipe } from "../../pipes/remove-slashes.pipe";
 
 @Component({
     selector: 'app-user-card',
     standalone: true,
     templateUrl: './user-card.component.html',
     styleUrls: ['./user-card.component.scss'],
-    imports: [MatDialogModule, MatCardModule, MatDividerModule, MatIconModule]
+    imports: [MatDialogModule, MatCardModule, MatDividerModule, MatIconModule, RemoveSlashesPipe]
 })
 export class UserCardComponent {
 

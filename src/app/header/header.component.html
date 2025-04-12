@@ -39,6 +39,8 @@
 
                 <nav class="header_secondline__left_box-nav">
                     <a href="#" *ngFor="let item of menuItems" class="menu_item_secondline">{{item}}</a>
+
+                    <div>{{ currentDate | date:'medium' }}</div>
                 </nav>
             </div>
 

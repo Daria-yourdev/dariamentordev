@@ -7,13 +7,14 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { DeleteTodoDialogComponent } from "../delete-todo-dialog/delete-todo-dialog.component";
 import { EditTodoDialogComponent } from "../edit-todo-dialog/edit-todo-dialog.component";
 import { MatIconModule } from "@angular/material/icon";
+import { TwentySymbolMaxPipe } from "../../pipes/twenty-symbolmax.pipe";
 
 @Component({
     selector: 'app-todo-card',
     standalone: true,
     templateUrl: './todo-card.component.html',
     styleUrl: './todo-card.component.scss',
-    imports: [MatDialogModule, MatCardModule, MatDividerModule, MatIconModule]
+    imports: [MatDialogModule, MatCardModule, MatDividerModule, MatIconModule, TwentySymbolMaxPipe]
 })
 
 export class TodoCardComponent {

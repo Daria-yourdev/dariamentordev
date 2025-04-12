@@ -39,7 +39,10 @@ export class CreateUserFormComponent {
         company: new FormGroup({
             name: new FormControl(
                 '', { validators: [Validators.required, Validators.minLength(2)] })
-        })
+        }),
+        phone: new FormControl(
+            '', { validators: [Validators.required] }
+        ),
     });
 
     public submitForm(): void {

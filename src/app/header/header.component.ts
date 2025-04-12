@@ -1,8 +1,8 @@
-import { NgFor, NgIf } from "@angular/common";
+import { DatePipe, NgFor, NgIf } from "@angular/common";
 import { Component } from "@angular/core";
 import { RouterLink } from "@angular/router";
 
-const menuItems = ['Каталог', 'стройматериалы', 'Инструменты', 'Электрика', 'Интерьер и одежда'];
+const menuItems = ['Каталог', 'стройматериалы', 'Инструменты', 'Электрика'];
 
 const upperCaseMenuItems = menuItems.map(
     (item) => {
@@ -13,12 +13,14 @@ const upperCaseMenuItems = menuItems.map(
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [NgIf, NgFor, RouterLink],
+    imports: [NgIf, NgFor, RouterLink, DatePipe],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
     title = 'mentoring-first-project';
+
+    currentDate: Date = new Date();
 
     isShowCatalog = true;
 
@@ -42,5 +44,5 @@ export class HeaderComponent {
 
     readonly users = "Пользователи";
     
-    readonly todos = 'Задачи'
+    readonly todos = 'Задачи';
 }

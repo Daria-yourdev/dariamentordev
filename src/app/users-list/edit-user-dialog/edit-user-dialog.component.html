@@ -1,5 +1,5 @@
 <div class="form-content">
-    
+
     <h3 class="form-title">Редактировать юзера</h3>
 
     <form action="" class="user-form" [formGroup]="form">
@@ -43,7 +43,14 @@
                 Минимум 2 символа</mat-error>
         </mat-form-field>
 
-        <button mat-raised-button class="create_user-button" [disabled]="form.invalid"
-            type="submit" [mat-dialog-close]="userWithUpdatedFields"><mat-icon>check_circle</mat-icon>Сохранить изменения</button>
+        <mat-form-field class="form-field">
+            <mat-label>Телефон</mat-label>
+            <input matInput formControlName="phone" placeholder="Введите номер телефона" type="tel">
+            <mat-error *ngIf="form.controls.phone.errors?.['required']">
+                Телефон <strong>обязателен</strong></mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button class="create_user-button" [disabled]="form.invalid" type="submit"
+            [mat-dialog-close]="userWithUpdatedFields"><mat-icon>check_circle</mat-icon>Сохранить изменения</button>
     </form>
 </div>

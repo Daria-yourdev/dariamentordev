@@ -19,7 +19,7 @@ export interface User {
         city: string;
         zipcode: string;
     }
-    phone?: string;
+    phone: string;
     website: string;
     company: {
         name: string;
@@ -70,6 +70,7 @@ export class UsersListComponent {
             name: formData.name,
             email: formData.email,
             website: formData.website,
+            phone: formData.phone,
             company: {
                 name: formData.company.name
             },
