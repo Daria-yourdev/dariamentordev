@@ -50,8 +50,17 @@
                 Телефон <strong>обязателен</strong></mat-error>
         </mat-form-field>
 
-        <button mat-raised-button class="create_user-button" [disabled]="form.invalid" type="submit"
+        <button 
+            mat-raised-button 
+            class="create_user-button" 
+            [disabled]="form.invalid" 
+            type="submit"
             [mat-dialog-close]="userWithUpdatedFields"
-            matTooltip="Редактировать данные пользователя"><mat-icon>check_circle</mat-icon>Редактировать</button>
+            matTooltip="Редактировать данные пользователя">
+            
+            <mat-icon>check_circle</mat-icon>
+            Редактировать
+        </button>
+
     </form>
 </div>

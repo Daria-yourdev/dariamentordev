@@ -27,7 +27,16 @@
             <mat-radio-button [value]="false">Нет</mat-radio-button>
         </mat-radio-group>
 
-        <button mat-raised-button class="create_todo-button" [disabled]="form.invalid" type="submit"
-            (click)="submitForm()"><mat-icon>add</mat-icon>Добавить туду</button>
+        <button 
+            mat-raised-button 
+            class="create_todo-button" 
+            [disabled]="form.invalid" 
+            type="submit"
+            (click)="submitForm()">
+            
+            <mat-icon>add</mat-icon>
+            Добавить туду
+        </button>
+        
     </form>
 </div>

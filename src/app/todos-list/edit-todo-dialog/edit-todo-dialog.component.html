@@ -28,8 +28,17 @@
             <mat-radio-button [value]="false">Нет</mat-radio-button>
         </mat-radio-group>
 
-        <button mat-raised-button class="create_todo-button" [disabled]="form.invalid" 
-        type="submit" [mat-dialog-close]="todoWithUpdatedFields"><mat-icon>check_circle</mat-icon>Сохранить изменения</button>
+        <button 
+            mat-raised-button 
+            class="create_todo-button" 
+            [disabled]="form.invalid" 
+            type="submit" 
+            [mat-dialog-close]="todoWithUpdatedFields">
+            
+            <mat-icon>check_circle</mat-icon>
+            Сохранить изменения
+        </button>
+        
     </form>
 
 </div>

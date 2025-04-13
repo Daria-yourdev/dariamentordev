@@ -50,7 +50,16 @@
                 Телефон <strong>обязателен</strong></mat-error>
         </mat-form-field>
 
-        <button mat-raised-button class="create_user-button" [disabled]="form.invalid" type="submit"
-            (click)="submitForm()"><mat-icon>add</mat-icon>Добавить юзера</button>
+        <button 
+            mat-raised-button 
+            class="create_user-button" 
+            [disabled]="form.invalid" 
+            type="submit"
+            (click)="submitForm()">
+            
+            <mat-icon>add</mat-icon>
+            Добавить юзера
+        </button>
+        
     </form>
 </div>
