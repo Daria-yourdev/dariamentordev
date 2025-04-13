@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-    name: 'remove_slashes',
+    name: 'removeSlashes',
     standalone: true
 })
 export class RemoveSlashesPipe implements PipeTransform {

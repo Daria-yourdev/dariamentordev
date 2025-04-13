@@ -7,7 +7,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { DeleteTodoDialogComponent } from "../delete-todo-dialog/delete-todo-dialog.component";
 import { EditTodoDialogComponent } from "../edit-todo-dialog/edit-todo-dialog.component";
 import { MatIconModule } from "@angular/material/icon";
-import { TwentySymbolMaxPipe } from "../../pipes/twenty-symbolmax.pipe";
+import { TwentySymbolMaxPipe } from "../../pipes/cutText.pipe";
 
 @Component({
     selector: 'app-todo-card',
