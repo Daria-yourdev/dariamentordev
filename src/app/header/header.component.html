@@ -15,7 +15,7 @@
                 </nav>
             </div>
 
-            <button (click)="isShowCatalog = !isShowCatalog">Скрыть\Показать каталог</button>
+            <!-- <button (click)="isShowCatalog = !isShowCatalog">Скрыть\Показать каталог</button> -->
 
             <button (click)="changeMenuText()">Изменить текст</button>
 
@@ -24,9 +24,26 @@
                     <img src="/assets/header/phone.svg" alt="">
                     <a href="tel:+79650842929" class="tel_link">+7 (965) 084-29-29</a>
                 </div>
-                <img src="/assets/header/heart.svg" alt="">
                 <a href="#" class="header_firstline__right_box-binicon" yellow><img src="/assets/header/bin.svg"
                         alt="">Пусто</a>
+
+
+                <ng-container *ngIf="userService.user$ | async as user; else notAuth">
+                    <button (click)="logout()" matTooltip="ВЫХОД" class="header_firstline__right_box-binicon" yellow>
+                        <mat-icon>logout</mat-icon>Выйти ({{user.name}})
+                    </button>
+                    <button *ngIf="user.isAdmin" routerLink="/admin" matTooltip="АДМИНКА"
+                        class="header_firstline__right_box-binicon" yellow>
+                        <mat-icon>admin_panel_settings</mat-icon>Админка
+                    </button>
+                </ng-container>
+
+                <ng-template #notAuth>
+                    <button (click)="openDialogLogIn()" matTooltip="ВХОД" class="header_firstline__right_box-binicon"
+                        yellow>
+                        <mat-icon>login</mat-icon>Войти
+                    </button>
+                </ng-template>
             </div>
         </div>
     </div>
