@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
 
 export interface User {
@@ -9,27 +10,25 @@ export interface User {
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
-    private user: User | null = null;
-
-    private readonly userSubject$ = new BehaviorSubject<User | null>(this.user);
+    private readonly userSubject$ = new BehaviorSubject<User | null>(null);
     public readonly user$ = this.userSubject$.asObservable();
 
+    constructor(private router: Router) { }
+
     public loginAsUser() {
-        this.user = { name: 'User', isAdmin: false };
-        this.userSubject$.next(this.user);
+        this.userSubject$.next({ name: 'User', isAdmin: false });
     }
 
     public loginAsAdmin() {
-        this.user = { name: 'Admin', isAdmin: true };
-        this.userSubject$.next(this.user);
+        this.userSubject$.next({ name: 'Admin', isAdmin: true });
     }
 
     get isAdmin(): boolean {
-        return this.user?.isAdmin ?? false;
+        return this.userSubject$.value?.isAdmin ?? false;
     }
 
     public logout() {
-        this.user = null;
         this.userSubject$.next(null);
+        this.router.navigate(['/']);
     }
 }
