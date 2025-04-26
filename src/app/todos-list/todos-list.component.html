@@ -6,7 +6,7 @@
     <h3 class="title_3">Компонент списка задач</h3>
 
     <div class="todos_cards">
-        <div class="todos_cards-card" *ngFor="let todo of todosService.todos$ | async">
+        <div class="todos_cards-card" *ngFor="let todo of todos$ | async">
 
             <app-todo-card 
             [todo]="todo" 

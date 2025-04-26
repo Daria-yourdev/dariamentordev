@@ -3,10 +3,13 @@ import { AsyncPipe, NgFor } from "@angular/common";
 import { TodoCardComponent } from "./todo-card/todo-card.component";
 import { TodosApiService } from "./todos-api.service";
 import { HttpClient } from "@angular/common/http";
-import { TodosService } from "./todos.service";
 import { CreateTodoFormComponent } from "./create-todo-form/create-todo-form.component";
 import { MatIconModule } from "@angular/material/icon";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
+import { Store } from "@ngrx/store";
+import { TodosActions } from "./store/todos.actions";
+import { selectTodos } from "./store/todos.selector";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 export interface Todo {
     userId: number,
@@ -27,40 +30,56 @@ export interface Todo {
 export class TodosListComponent {
     readonly todosApiService = inject(TodosApiService);
     readonly apiService = inject(HttpClient);
-    readonly todosService = inject(TodosService);
 
     readonly dialog = inject(MatDialog);
+    private snackBar = inject(MatSnackBar);
+
+    private showSnackBarUser(message: string, action: string = 'OK', duration: number = 3000): void {
+        this.snackBar.open(message, action, { duration });
+    }
+
+    private readonly store = inject(Store);
+    public readonly todos$ = this.store.select(selectTodos);
 
     constructor() {
         this.todosApiService.getTodos().subscribe(
             (response: Todo[]) => {
-                this.todosService.setTodos(response);
+                this.store.dispatch(TodosActions.set({ todos: response }));
             }
         )
     }
 
     deleteTodo(id: number) {
-        this.todosService.deleteTodo(id);
+        this.store.dispatch(TodosActions.delete({ id }));
     }
 
     editTodo(todo: Todo) {
-        this.todosService.editTodos(todo);
+        this.store.dispatch(TodosActions.edit({ todo }));
     }
 
     createTodo(todoData: Todo) {
-        this.todosService.createTodo({
-            id: new Date().getTime(),
-            userId: todoData.userId,
-            title: todoData.title,
-            completed: todoData.completed
-        })
+        this.store.dispatch(
+            TodosActions.create({
+                todo: {
+                    id: new Date().getTime(),
+                    userId: todoData.userId,
+                    title: todoData.title,
+                    completed: todoData.completed
+                },
+            }),
+        );
     }
 
     openDialogCreate(): void {
         const dialogRef = this.dialog.open(CreateTodoFormComponent);
 
         dialogRef.afterClosed().subscribe((result: Todo) => {
-            this.createTodo(result)
+            if (result) {
+                this.showSnackBarUser('Задача добавлена', 'OK');
+                this.createTodo(result);
+            } else {
+                this.showSnackBarUser('Добавление отменено', 'OK');
+            }
         });
     }
 }
