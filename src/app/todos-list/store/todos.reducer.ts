@@ -8,18 +8,14 @@ const initiaLState: { todos: Todo[] } = {
 
 export const todoReducer = createReducer(
     initiaLState,
-    on(TodosActions.set, (state, payload) => ({
+    on(TodosActions.loadSuccess, (state, payload) => ({
         ...state,
         todos: payload.todos,
     })),
     on(TodosActions.edit, (state, payload) => ({
         ...state,
-        todos: state.todos.map((todo) => {
-            if (todo.id === payload.todo.id) {
-                return payload.todo;
-            } else {
-                return todo;
-            }
+        todos: state.todos.map((todo: Todo) => {
+            return todo.id === payload.todo.id ? payload.todo : todo;
         }),
     })),
     on(TodosActions.create, (state, payload) => ({
@@ -28,6 +24,6 @@ export const todoReducer = createReducer(
     })),
     on(TodosActions.delete, (state, payload) => ({
         ...state,
-        todos: state.todos.filter((todo) => todo.id !== payload.id),
+        todos: state.todos.filter((todo: Todo) => todo.id !== payload.id),
     }))
 );

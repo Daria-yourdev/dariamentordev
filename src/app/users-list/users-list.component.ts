@@ -57,7 +57,7 @@ export class UsersListComponent {
     constructor() {
         this.usersApiService.getUsers().subscribe(
             (response: User[]) => {
-                this.store.dispatch(UsersActions.set({ users: response }));
+                this.store.dispatch(UsersActions.loadSuccess({ users: response }));
             });
     }
 

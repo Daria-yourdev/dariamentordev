@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
 import { UsersActions } from './users.actions';
 import { UsersApiService } from '../users-api.service';
+import { User } from '../users-list.component';
 
 @Injectable()
 export class UserEffects {
@@ -11,10 +12,10 @@ export class UserEffects {
             ofType(UsersActions.load),
             mergeMap(() =>
                 this.usersApiService.getUsers().pipe(
-                    map((users) => UsersActions.set({ users })),
-                    catchError((error) =>
+                    map((users: User[]) => UsersActions.loadSuccess({ users })),
+                    catchError((error: string) =>
                         of(
-                            UsersActions.loaderror({
+                            UsersActions.loadError({
                                 error: 'не удалось загрузить задачи',
                             })
                         )

@@ -34,7 +34,7 @@ export class TodosListComponent {
     readonly dialog = inject(MatDialog);
     private snackBar = inject(MatSnackBar);
 
-    private showSnackBarUser(message: string, action: string = 'OK', duration: number = 3000): void {
+    private showSnackBarTodo(message: string, action: string = 'OK', duration: number = 3000): void {
         this.snackBar.open(message, action, { duration });
     }
 
@@ -44,7 +44,7 @@ export class TodosListComponent {
     constructor() {
         this.todosApiService.getTodos().subscribe(
             (response: Todo[]) => {
-                this.store.dispatch(TodosActions.set({ todos: response }));
+                this.store.dispatch(TodosActions.loadSuccess({ todos: response }));
             }
         )
     }
@@ -75,10 +75,10 @@ export class TodosListComponent {
 
         dialogRef.afterClosed().subscribe((result: Todo) => {
             if (result) {
-                this.showSnackBarUser('Задача добавлена', 'OK');
+                this.showSnackBarTodo('Задача добавлена', 'OK');
                 this.createTodo(result);
             } else {
-                this.showSnackBarUser('Добавление отменено', 'OK');
+                this.showSnackBarTodo('Добавление отменено', 'OK');
             }
         });
     }

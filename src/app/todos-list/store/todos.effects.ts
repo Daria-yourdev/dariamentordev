@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
 import { TodosApiService } from '../todos-api.service';
 import { TodosActions } from './todos.actions';
+import { Todo } from '../todos-list.component';
 
 @Injectable()
 export class TodoEffects {
@@ -11,10 +12,10 @@ export class TodoEffects {
       ofType(TodosActions.load),
       mergeMap(() =>
         this.todosApiService.getTodos().pipe(
-          map((todos) => TodosActions.set({ todos })),
-          catchError((error) =>
+          map((todos: Todo[]) => TodosActions.loadSuccess({ todos })),
+          catchError((error: string) =>
             of(
-              TodosActions.loaderror({
+              TodosActions.loadError({
                 error: 'не удалось загрузить задачи',
               })
             )
@@ -27,5 +28,5 @@ export class TodoEffects {
   constructor(
     private actions$: Actions,
     private todosApiService: TodosApiService
-  ) {}
+  ) { }
 }

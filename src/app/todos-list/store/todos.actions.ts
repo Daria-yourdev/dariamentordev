@@ -6,8 +6,8 @@ export const TodosActions = createActionGroup({
     source: 'Todos',
     events: {
         'load': emptyProps(),
-        'loaderror': props<{ error: string }>(),
-        'set': props<{ todos: Todo[] }>(),
+        'loadError': props<{ error: string }>(),
+        'loadSuccess': props<{ todos: Todo[] }>(),
         'edit': props<{ todo: Todo }>(),
         'create': props<{ todo: Todo }>(),
         'delete': props<{ id: number }>(),

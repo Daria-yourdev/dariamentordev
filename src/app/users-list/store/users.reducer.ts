@@ -8,18 +8,14 @@ const initialState: { users: User[] } = {
 
 export const userReducer = createReducer(
     initialState,
-    on(UsersActions.set, (state, payload) => ({
+    on(UsersActions.loadSuccess, (state, payload) => ({
         ...state,
         users: payload.users,
     })),
     on(UsersActions.edit, (state, payload) => ({
         ...state,
-        users: state.users.map((user) => {
-            if (user.id === payload.user.id) {
-                return payload.user;
-            } else {
-                return user;
-            }
+        users: state.users.map((user: User) => {
+            return user.id === payload.user.id ? payload.user : user;
         }),
     })),
     on(UsersActions.create, (state, payload) => ({
@@ -28,6 +24,6 @@ export const userReducer = createReducer(
     })),
     on(UsersActions.delete, (state, payload) => ({
         ...state,
-        users: state.users.filter((user) => user.id !== payload.id),
+        users: state.users.filter((user: User) => user.id !== payload.id),
     }))
 );

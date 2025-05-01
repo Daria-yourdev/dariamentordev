@@ -5,8 +5,8 @@ export const UsersActions = createActionGroup({
     source: 'Users',
     events: {
         'load': emptyProps(),
-        'loaderror': props<{ error: string }>(),
-        'set': props<{ users: User[] }>(),
+        'loadError': props<{ error: string }>(),
+        'loadSuccess': props<{ users: User[] }>(),
         'edit': props<{ user: User }>(),
         'create': props<{ user: User }>(),
         'delete': props<{ id: number }>(),
